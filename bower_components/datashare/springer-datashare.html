@@ -44,7 +44,13 @@
         dataChanged: function(data) {
             console.log(this.localName + '#' + this.id + " data changed", data);
             this.data = data.address;
+        },
+
+        attached: function() {
+            console.log(this.localName + '#' + this.id + ' was attached');
+            this._findParentComponent(this).onDataChange(this.dataChanged.bind(this))
         }
+
 
     }
 </script>

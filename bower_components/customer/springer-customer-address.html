@@ -30,40 +30,26 @@
 <script>
     Polymer({
         is: 'springer-customer-address',
-//        behaviors: [SpringerDatachild],
-        properties: {
-            data: {
-                type: Object
-            }
-        },
+        behaviors: [SpringerDatachild]
 
-        _findParentComponent: function (el, cls) {
-            while ((el = el.parentElement) && !el.onDataChange);
-            return el;
-        },
-
-        dataChanged: function(data) {
-            console.log(this.localName + '#' + this.id + " data changed", data);
-            this.data = data.address;
-        },
-
-        created: function() {
-            console.log(this.localName + '#' + this.id + ' was created');
-        },
-
-        attached: function() {
-            console.log(this.localName + '#' + this.id + ' was attached');
-            this._findParentComponent(this).onDataChange(this.dataChanged.bind(this))
-        },
-
-        detached: function() {
-            console.log(this.localName + '#' + this.id + ' was detached');
-        },
-
-        attributeChanged: function(name, type) {
-            console.log(this.localName + '#' + this.id + ' attribute ' + name +
-                    ' was changed to ' + this.getAttribute(name));
-        }
+//        ,
+//        created: function() {
+//            console.log(this.localName + '#' + this.id + ' was created');
+//        },
+//
+//        attached: function() {
+//            console.log(this.localName + '#' + this.id + ' was attached');
+//            this._findParentComponent(this).onDataChange(this.dataChanged.bind(this))
+//        },
+//
+//        detached: function() {
+//            console.log(this.localName + '#' + this.id + ' was detached');
+//        },
+//
+//        attributeChanged: function(name, type) {
+//            console.log(this.localName + '#' + this.id + ' attribute ' + name +
+//                    ' was changed to ' + this.getAttribute(name));
+//        }
 
     });
 </script>
