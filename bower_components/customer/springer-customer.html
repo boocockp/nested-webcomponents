@@ -1,10 +1,13 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="springer-customer-address.html">
 
 <dom-module id="springer-customer">
     <template>
         <h2>Customer</h2>
         <p><label>Name:</label><span>{{data.name}}</span></p>
         <p><label>Type:</label><span>{{data.type}}</span></p>
+
+        <springer-customer-address data="{{data.address}}"></springer-customer-address>
     </template>
 </dom-module>
 
@@ -16,24 +19,25 @@
                 type: Object,
                 value: {name: '?'}
             }
-        },
-
-        created: function() {
-            console.log(this.localName + '#' + this.id + ' was created');
-        },
-
-        attached: function() {
-            console.log(this.localName + '#' + this.id + ' was attached');
-        },
-
-        detached: function() {
-            console.log(this.localName + '#' + this.id + ' was detached');
-        },
-
-        attributeChanged: function(name, type) {
-            console.log(this.localName + '#' + this.id + ' attribute ' + name +
-                    ' was changed to ' + this.getAttribute(name));
         }
+//        ,
+
+//        created: function() {
+//            console.log(this.localName + '#' + this.id + ' was created');
+//        },
+//
+//        attached: function() {
+//            console.log(this.localName + '#' + this.id + ' was attached');
+//        },
+//
+//        detached: function() {
+//            console.log(this.localName + '#' + this.id + ' was detached');
+//        },
+//
+//        attributeChanged: function(name, type) {
+//            console.log(this.localName + '#' + this.id + ' attribute ' + name +
+//                    ' was changed to ' + this.getAttribute(name));
+//        }
 
     });
 </script>
