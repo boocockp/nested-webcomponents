@@ -8,17 +8,17 @@
     <title>Nested Web Components</title>
 </head>
 <body>
-<h1>Nested Web Components</h1>
+    <h1>Nested Web Components</h1>
 
-<springer-customer id="customer1"></springer-customer>
+    <springer-customer id="customer1">
+        <springer-customer-address></springer-customer-address>
+    </springer-customer>
 
-<script>
-    $(function () {
+    <script>
         $.getJSON("customerData.json", function (data) {
             document.querySelector('#customer1').data = data;
         })
-    });
-</script>
+    </script>
 
 </body>
 </html>

@@ -6,8 +6,7 @@
         <h2>Customer</h2>
         <p><label>Name:</label><span>{{data.name}}</span></p>
         <p><label>Type:</label><span>{{data.type}}</span></p>
-
-        <springer-customer-address data="{{data.address}}"></springer-customer-address>
+        <content></content>
     </template>
 </dom-module>
 
@@ -17,27 +16,42 @@
         properties: {
             data: {
                 type: Object,
-                value: {name: '?'}
+                value: {name: '?'},
+                observer: 'dataChanged'
+            }
+        },
+        dataChanged: function() {
+            console.log(this.localName + '#' + this.id + "data changed");
+            this.updateChildren();
+        },
+        updateChildren: function() {
+            console.log(this.localName + '#' + this.id + "updateChildrenData");
+            var children = this.children;
+            for (i = 0; i < children.length; i++) {
+                var child = children[i];
+                if (child.dataChanged) {
+                    child.dataChanged.call(child, this.data);
+                }
             }
         }
-//        ,
+        ,
 
-//        created: function() {
-//            console.log(this.localName + '#' + this.id + ' was created');
-//        },
-//
-//        attached: function() {
-//            console.log(this.localName + '#' + this.id + ' was attached');
-//        },
-//
-//        detached: function() {
-//            console.log(this.localName + '#' + this.id + ' was detached');
-//        },
-//
-//        attributeChanged: function(name, type) {
-//            console.log(this.localName + '#' + this.id + ' attribute ' + name +
-//                    ' was changed to ' + this.getAttribute(name));
-//        }
+        created: function() {
+            console.log(this.localName + '#' + this.id + ' was created');
+        },
+
+        attached: function() {
+            console.log(this.localName + '#' + this.id + ' was attached');
+        },
+
+        detached: function() {
+            console.log(this.localName + '#' + this.id + ' was detached');
+        },
+
+        attributeChanged: function(name, type) {
+            console.log(this.localName + '#' + this.id + ' attribute ' + name +
+                    ' was changed to ' + this.getAttribute(name));
+        }
 
     });
 </script>

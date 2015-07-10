@@ -15,8 +15,33 @@
         properties: {
             data: {
                 type: Object,
-                value: {name: '?'}
+                value: function() {
+                    return this.parentElement.data.address;
+                }
             }
+        },
+        dataChanged: function() {
+            console.log(this.localName + '#' + this.id + " data changed");
+            console.log(this.localName + '#' + this.id + " parent data is " + this.parentElement.data);
+            this.data = this.parentElement.data.address;
+        },
+
+        created: function() {
+            console.log(this.localName + '#' + this.id + ' was created');
+        },
+
+        attached: function() {
+            console.log(this.localName + '#' + this.id + ' was attached');
+            this.parentElement.updateChildren()
+        },
+
+        detached: function() {
+            console.log(this.localName + '#' + this.id + ' was detached');
+        },
+
+        attributeChanged: function(name, type) {
+            console.log(this.localName + '#' + this.id + ' attribute ' + name +
+                    ' was changed to ' + this.getAttribute(name));
         }
 
     });
