@@ -3,10 +3,22 @@
 
 <dom-module id="springer-customer">
     <template>
-        <h2>Customer</h2>
-        <p><label>Name:</label><span>{{data.name}}</span></p>
-        <p><label>Type:</label><span>{{data.type}}</span></p>
-        <content></content>
+        <h3>Basic information</h3>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{data.name}}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Type</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{data.type}}</p>
+                </div>
+            </div>
+            <content></content>
+        </form>
     </template>
 </dom-module>
 
@@ -20,18 +32,22 @@
                 observer: 'dataChanged'
             }
         },
+
+        dataChangeCallbacks: [],
+
+        onDataChange: function(callback) {
+            this.dataChangeCallbacks.push(callback);
+        },
+
         dataChanged: function() {
             console.log(this.localName + '#' + this.id + "data changed");
             this.updateChildren();
         },
         updateChildren: function() {
-            console.log(this.localName + '#' + this.id + "updateChildrenData");
-            var children = this.children;
-            for (i = 0; i < children.length; i++) {
-                var child = children[i];
-                if (child.dataChanged) {
-                    child.dataChanged.call(child, this.data);
-                }
+            console.log(this.localName + '#' + this.id + "updateChildren");
+            var callbacks = this.dataChangeCallbacks;
+            for (i = 0; i < callbacks.length; i++) {
+                callbacks[i].call(this, this.data);
             }
         }
         ,
