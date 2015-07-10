@@ -1,0 +1,39 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="springer-customer">
+    <template>
+        <h2>Customer</h2>
+        <p><label>Name:</label><span>{{data.name}}</span></p>
+        <p><label>Type:</label><span>{{data.type}}</span></p>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'springer-customer',
+        properties: {
+            data: {
+                type: Object,
+                value: {name: '?'}
+            }
+        },
+
+        created: function() {
+            console.log(this.localName + '#' + this.id + ' was created');
+        },
+
+        attached: function() {
+            console.log(this.localName + '#' + this.id + ' was attached');
+        },
+
+        detached: function() {
+            console.log(this.localName + '#' + this.id + ' was detached');
+        },
+
+        attributeChanged: function(name, type) {
+            console.log(this.localName + '#' + this.id + ' attribute ' + name +
+                    ' was changed to ' + this.getAttribute(name));
+        }
+
+    });
+</script>

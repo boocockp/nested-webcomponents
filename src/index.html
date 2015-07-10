@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../bower_components/customer/springer-customer.html">
+    <title>Nested Web Components</title>
+</head>
+<body>
+    <h1>Nested Web Components</h1>
+
+    <springer-customer id="customer1"></springer-customer>
+
+    <script id="customer1Data" type="application/json">
+        {
+            "name": "Paul B",
+            "type": "Small Fry",
+            "username": "paul1"
+        }
+    </script>
+
+    <script>
+        dataScriptId = 'customer1' + 'Data';
+        var json = JSON.parse(document.querySelector('#' + dataScriptId).innerHTML);
+        document.querySelector('#customer1').data = json;
+    </script>
+
+</body>
+</html>
