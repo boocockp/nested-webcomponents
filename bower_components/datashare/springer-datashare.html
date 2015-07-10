@@ -28,4 +28,23 @@
         }
 
     };
+
+    SpringerDatachild = {
+        properties: {
+            data: {
+                type: Object
+            }
+        },
+
+        _findParentComponent: function (el, cls) {
+            while ((el = el.parentElement) && !el.onDataChange);
+            return el;
+        },
+
+        dataChanged: function(data) {
+            console.log(this.localName + '#' + this.id + " data changed", data);
+            this.data = data.address;
+        }
+
+    }
 </script>
