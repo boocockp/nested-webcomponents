@@ -1,0 +1,31 @@
+<script>
+    SpringerDatamaster = {
+
+        properties: {
+            data: {
+                type: Object,
+                observer: '_dataChanged'
+            }
+        },
+
+        dataChangeCallbacks: [],
+
+        onDataChange: function(callback) {
+            this.dataChangeCallbacks.push(callback);
+        },
+
+        _dataChanged: function() {
+            console.log(this.localName + '#' + this.id + "data changed");
+            this.updateChildren();
+        },
+
+        updateChildren: function() {
+            console.log(this.localName + '#' + this.id + "updateChildren");
+            var callbacks = this.dataChangeCallbacks;
+            for (i = 0; i < callbacks.length; i++) {
+                callbacks[i].call(this, this.data);
+            }
+        }
+
+    };
+</script>

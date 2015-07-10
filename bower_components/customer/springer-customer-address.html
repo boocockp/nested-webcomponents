@@ -31,12 +31,12 @@
         is: 'springer-customer-address',
         properties: {
             data: {
-                type: Object,
+                type: Object
             }
         },
 
         _findParentComponent: function (el, cls) {
-            while ((el = el.parentElement) && !el.data);
+            while ((el = el.parentElement) && !el.onDataChange);
             return el;
         },
 

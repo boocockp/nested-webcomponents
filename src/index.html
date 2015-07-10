@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Nested Web Components</h1>
+        <h1>Customer Details</h1>
 
         <springer-customer id="customer1">
             <springer-customer-address></springer-customer-address>
@@ -30,6 +30,7 @@
         }
     </script>
 
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
         dataScriptId = 'customer1' + 'Data';
         var json = JSON.parse(document.querySelector('#' + dataScriptId).innerHTML);
