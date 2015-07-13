@@ -1,0 +1,3 @@
+A simple experiment to create a pair of webcomponents.  One is nested inside the other in the web page as part of the outer component's <content>, not as a fixed part of the outer component.
+The outer component has a data object property.  The inner compnent can use a certain field of that data object without the outer component specifying it. The aim is to allow the outer component
+to have different contents in different situations where it is used.
